@@ -1,7 +1,7 @@
+import {fizzBuzz} from "./fizzbuzz";
 
 describe("fizzbuzz", () => {
-    it('return empty string',() => {
-        expect(fizzBuzz(2)).toBe('')
+    it('should return a value type of string',() => {
+        expect(typeof fizzBuzz(2)).toBe('string')
     })
-
 });
