@@ -1,8 +1,21 @@
+export const FIZZ = 'Fizz'
+export const BUZZ = 'Buzz'
+export const FIZZBUZZ = 'FizzBuzz'
+
 export function fizzBuzz(param: number) {
-    if (param === 15){
-        return 'FizzBuzz';
+
+    let result = ''
+
+    if (isMutipleOf3(param)) {
+        result += FIZZ
     }
-    return isMutipleOf3(param) ? 'Fizz' : (param === 5 ? 'Buzz':'');
+
+    if (isMutipleOf5(param)) {
+        result += BUZZ
+    }
+
+    return result;
 }
 
 const isMutipleOf3 = (param: number) => param % 3 === 0
+const isMutipleOf5 = (param: number) => param % 5 === 0
