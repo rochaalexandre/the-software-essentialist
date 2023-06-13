@@ -4,7 +4,7 @@ export const FIZZBUZZ = 'FizzBuzz'
 
 export function fizzBuzz(param: number) {
     let result = ''
-    if (param < 1) {
+    if (param < 1 || param > 100) {
         return result;
     }
 
