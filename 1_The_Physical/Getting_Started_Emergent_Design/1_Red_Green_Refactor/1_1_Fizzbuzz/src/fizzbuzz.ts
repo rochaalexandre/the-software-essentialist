@@ -3,9 +3,7 @@ export const BUZZ = 'Buzz'
 export const FIZZBUZZ = 'FizzBuzz'
 
 export function fizzBuzz(param: number) {
-
     let result = ''
-
     if (isMutipleOf3(param)) {
         result += FIZZ
     }
@@ -14,7 +12,11 @@ export function fizzBuzz(param: number) {
         result += BUZZ
     }
 
-    return result;
+    if (!result){
+        result = param.toString()
+    }
+
+    return result
 }
 
 const isMutipleOf3 = (param: number) => param % 3 === 0
