@@ -4,6 +4,10 @@ export const FIZZBUZZ = 'FizzBuzz'
 
 export function fizzBuzz(param: number) {
     let result = ''
+    if (param < 1) {
+        return result;
+    }
+
     if (isMutipleOf3(param)) {
         result += FIZZ
     }
