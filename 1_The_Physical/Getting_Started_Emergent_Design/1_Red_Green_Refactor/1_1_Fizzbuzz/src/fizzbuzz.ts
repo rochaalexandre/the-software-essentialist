@@ -1,3 +1,3 @@
 export function fizzBuzz(param: number) {
-    return '';
+    return param === 3 ? 'Fizz': '';
 }
