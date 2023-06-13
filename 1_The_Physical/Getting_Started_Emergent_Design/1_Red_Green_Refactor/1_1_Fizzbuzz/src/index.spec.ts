@@ -20,9 +20,9 @@ describe("fizzbuzz", () => {
 
     test.each([
         {value: 9, mutiple: 3, expected: 'Fizz'},
-        {value: 42, multiple: 3, expected: 'FIzz'},
-        ])('should return $expected when the value is $value', ({value, expected}) => {
-            expect(fizzBuzz(value)).toBe(expected)
-        });
+        {value: 42, multiple: 3, expected: 'Fizz'},
+    ])('should return $expected when the value is $value', ({value, expected}) => {
+        expect(fizzBuzz(value)).toBe(expected)
+    });
 
 });
