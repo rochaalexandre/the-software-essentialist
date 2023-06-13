@@ -20,4 +20,8 @@ describe("fizzbuzz", () => {
     it('should return empty for numbers lower than 1', () => {
         expect(fizzBuzz(-100)).toBe('');
     })
+
+    it('should return empty for numbers bigger than 100', () => {
+        expect(fizzBuzz(102)).toBe('');
+    })
 });
