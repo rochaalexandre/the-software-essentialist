@@ -17,4 +17,7 @@ describe("fizzbuzz", () => {
         expect(fizzBuzz(value)).toBe(expected)
     });
 
+    it('should return empty for numbers lower than 1', () => {
+        expect(fizzBuzz(-100)).toBe('');
+    })
 });
