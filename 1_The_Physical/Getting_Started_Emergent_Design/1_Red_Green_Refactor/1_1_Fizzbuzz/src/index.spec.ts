@@ -11,6 +11,7 @@ describe("fizzbuzz", () => {
         {value: 42, expected: FIZZ},
         {value: 5, expected: BUZZ},
         {value: 15, expected: FIZZBUZZ},
+        {value: 45, expected: FIZZBUZZ},
     ])('should return $expected when the value is $value', ({value, expected}) => {
         expect(fizzBuzz(value)).toBe(expected)
     });
