@@ -9,6 +9,14 @@ describe('palindrome checker', () => {
         expect(isPalindrome('mom')).toBeTruthy()
     });
 
+    it('should return true for "Mom"', async () => {
+        expect(isPalindrome('Mom')).toBeTruthy()
+    });
+
+    it('should return true for "MoM"', async () => {
+        expect(isPalindrome('Mom')).toBeTruthy()
+    });
+
     it('should return false for "Momx"', async () => {
         expect(isPalindrome('Momx')).toBeFalsy()
     });
