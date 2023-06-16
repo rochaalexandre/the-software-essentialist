@@ -29,6 +29,18 @@ describe('palindrome checker', () => {
         expect(isPalindrome('Was It A Rat I Saw')).toBeTruthy()
     });
 
+    it('should return true for "Never Odd or Even"', async () => {
+        expect(isPalindrome('Never Odd or Even')).toBeTruthy()
+    });
+
+    it('should return false for "Never Odd or Even1"', async () => {
+        expect(isPalindrome('Never Odd or Even1')).toBeFalsy()
+    });
+
+    it('should return true for "1Never Odd or Even1"', async () => {
+        expect(isPalindrome('1Never Odd or Even1')).toBeTruthy()
+    });
+
 
 })
 
