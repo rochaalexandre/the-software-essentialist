@@ -25,6 +25,10 @@ describe('palindrome checker', () => {
         expect(isPalindrome('xMomx')).toBeFalsy()
     });
 
+    it('should return true for "Was It A Rat I Saw"', async () => {
+        expect(isPalindrome('Was It A Rat I Saw')).toBeTruthy()
+    });
+
 
 })
 
