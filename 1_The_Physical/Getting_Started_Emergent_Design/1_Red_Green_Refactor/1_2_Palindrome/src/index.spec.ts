@@ -7,6 +7,10 @@ describe('palindrome checker', () => {
     it('should return true for "mom"', async () => {
         expect(isPalindrome('mom')).toBeTruthy()
     });
+    it('should return false for "momx"', async () => {
+        expect(isPalindrome('momx')).toBeFalsy()
+    });
+
 })
 
 
