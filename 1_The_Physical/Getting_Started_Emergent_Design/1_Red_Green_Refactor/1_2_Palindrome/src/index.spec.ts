@@ -21,8 +21,8 @@ describe('palindrome checker', () => {
         expect(isPalindrome('Momx')).toBeFalsy()
     });
 
-    it('should return false for "xMomx"', async () => {
-        expect(isPalindrome('xMomx')).toBeFalsy()
+    it('should return true for "xMomx"', async () => {
+        expect(isPalindrome('xMomx')).toBeTruthy()
     });
 
     it('should return true for "Was It A Rat I Saw"', async () => {
