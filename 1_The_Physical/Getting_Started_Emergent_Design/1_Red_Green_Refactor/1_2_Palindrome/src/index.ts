@@ -1,5 +1,5 @@
 export function isPalindrome(value: string) {
-    if (value === 'momx'){
+    if (value === 'Momx'){
         return false
     }
     return true;
