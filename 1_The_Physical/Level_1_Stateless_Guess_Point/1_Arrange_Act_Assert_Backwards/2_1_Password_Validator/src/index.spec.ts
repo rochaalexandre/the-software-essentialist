@@ -3,20 +3,14 @@ import { PasswordValidator, Result } from "./index";
 describe('password validator', () => {
 
   test('Return object has sucess equal true', () => {
-    const result: Result = {
-      success: true,
-      errors: []
-    }
+    const result = new Result()
     expect(result.success).toBeTruthy()
   })
 
   test('Return object contains error list with one element', () => {
-    const result: Result = {
-      success: false,
-      errors: [{
-        message: "Your password should contain at least 1 digit"
-      }]
-    }
+    const result= new Result()
+    result.addError('Your password should contain at least 1 digit')
+
     expect(result.success).toBeFalsy()
     expect(result.errors).toHaveLength(1)
     expect(result.errors[0].message).toBeDefined()
