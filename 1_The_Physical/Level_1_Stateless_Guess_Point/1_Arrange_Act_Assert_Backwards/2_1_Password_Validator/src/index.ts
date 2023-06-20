@@ -8,7 +8,7 @@ export interface Error {
 }
 
 export class PasswordValidator {
-    public static validate(password: string): boolean {
-        return !!password
+    public static validate(password: string): Result {
+        return { sucess: !!password, errors: [] }
     }
 }

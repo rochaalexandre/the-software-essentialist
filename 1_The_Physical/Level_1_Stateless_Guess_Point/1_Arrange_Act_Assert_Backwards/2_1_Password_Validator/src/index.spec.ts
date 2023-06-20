@@ -23,7 +23,7 @@ describe('password validator', () => {
   })
 
   test('Should return true when a password is valid', ()=> {
-    const isValid = PasswordValidator.validate("uaK7qeqDUBJddir")
-    expect(isValid).toBeTruthy()
+    const result = PasswordValidator.validate("uaK7qeqDUBJddir")
+    expect(result.sucess).toBeTruthy()
   })
 })
