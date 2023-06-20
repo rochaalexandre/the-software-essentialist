@@ -6,3 +6,9 @@ export interface Result {
 export interface Error {
     message: string
 }
+
+export class PasswordValidator {
+    public static validate(password: string): boolean {
+        throw Error("Not implemented")
+    }
+}

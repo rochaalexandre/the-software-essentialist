@@ -1,4 +1,4 @@
-import {Result} from "./index";
+import {PasswordValidator, Result} from "./index";
 
 describe('password validator', () => {
 
@@ -20,5 +20,9 @@ describe('password validator', () => {
     expect(result.sucess).toBeFalsy()
     expect(result.errors).toHaveLength(1)
     expect(result.errors[0].message).toBeDefined()
+  })
+
+  test('Should return true when a password is valid', ()=> {
+    const isValid = PasswordValidator.validate("uaK7qeqDUBJddir")
   })
 })
