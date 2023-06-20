@@ -26,4 +26,11 @@ describe('password validator', () => {
     const result = PasswordValidator.validate("uaK7qeqDUBJddir")
     expect(result.sucess).toBeTruthy()
   })
+
+  test('Should return an error when the password length is less than 5', () => {
+    const result = PasswordValidator.validate("1233")
+    expect(result.sucess).toBeFalsy()
+    expect(result.errors).toHaveLength(1)
+  })
+
 })
