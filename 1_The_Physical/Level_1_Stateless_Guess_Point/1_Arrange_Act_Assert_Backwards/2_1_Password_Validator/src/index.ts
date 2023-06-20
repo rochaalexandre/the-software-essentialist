@@ -9,7 +9,12 @@ export interface Error {
 
 export class PasswordValidator {
     public static validate(password: string): Result {
-        if (password.length <5 ) {
+        if (password.length < 5 ) {
+            return { success: false, errors: [
+                {message: 'Your password must contain at least 5 characters'}
+            ]}
+        }
+        if (password.length > 15 ) {
             return { success: false, errors: [
                 {message: 'Your password must contain at least 5 characters'}
             ]}
