@@ -19,6 +19,11 @@ export class PasswordValidator {
                 {message: 'Your password must contain at least 5 characters'}
             ]}
         }
+        if (!/\d/.test(password)) {
+            return { success: false, errors: [
+                {message: 'Your password must contain at least 5 characters'}
+            ]}
+        }
         return { success: !!password, errors: [] }
     }
 }
