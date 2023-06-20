@@ -22,17 +22,31 @@ export class Result {
 export class PasswordValidator {
     public static validate(password: string): Result {
         const result = new Result()
-        if (password.length < 5 ) {
+
+        if (this.isSmallThan5Chars(password) ) {
             result.addError('Your password must contain at least 5 characters')
         }
-        if (password.length > 15 ) {
+
+        if (this.isBiggerThan15Chars(password)) {
             result.addError('Your password must contain at less than 15 characters')
         }
-        if (!/\d/.test(password)) {
+
+        if (this.isMissingDigit(password)) {
             result.addError('Your password must contain at less 1 Digit')
         }
 
         return result
+    }
+
+    private static isMissingDigit(value: string) {
+        return !/\d/.test(value)
+    }
+
+    private static isBiggerThan15Chars(value: string){
+        return value.length > 15
+    }
+    private static isSmallThan5Chars(value: string){
+        return value.length < 5
     }
 }
 
