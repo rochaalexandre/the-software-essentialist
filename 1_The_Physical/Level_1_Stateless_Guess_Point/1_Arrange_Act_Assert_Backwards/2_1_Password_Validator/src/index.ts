@@ -35,11 +35,19 @@ export class PasswordValidator {
             result.addError('Your password must contain at less 1 Digit')
         }
 
+        if (this.isMissingUpperCaseChar(password)) {
+            result.addError('Your password must contain at less 1 Upper Case letter')
+        }
+
         return result
     }
 
     private static isMissingDigit(value: string) {
         return !/\d/.test(value)
+    }
+
+    private static isMissingUpperCaseChar(value: string) {
+        return !/[A-Z]/.test(value)
     }
 
     private static isBiggerThan15Chars(value: string){
