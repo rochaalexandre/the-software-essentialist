@@ -1,5 +1,5 @@
 export interface Result {
-    sucess: boolean,
+    success: boolean,
     errors: Error[]
 }
 
@@ -10,10 +10,10 @@ export interface Error {
 export class PasswordValidator {
     public static validate(password: string): Result {
         if (password.length <5 ) {
-            return { sucess: false, errors: [
+            return { success: false, errors: [
                 {message: 'Your password must contain at least 5 characters'}
             ]}
         }
-        return { sucess: !!password, errors: [] }
+        return { success: !!password, errors: [] }
     }
 }
