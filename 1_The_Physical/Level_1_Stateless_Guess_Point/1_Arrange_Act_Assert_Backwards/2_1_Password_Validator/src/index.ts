@@ -3,8 +3,8 @@ export interface Error {
 }
 
 export class Result {
-    success: boolean
-    errors: Error[]
+    private success: boolean
+    private readonly errors: Error[]
 
     constructor (success?: boolean) {
         this.success = success || true
@@ -17,6 +17,15 @@ export class Result {
         }
         this.errors.push({message})
     }
+
+    public getErrors(): Error[] {
+        return this.errors
+    }
+
+    public isSuccess(): boolean {
+        return this.success
+    }
+
 }
 
 export class PasswordValidator {
