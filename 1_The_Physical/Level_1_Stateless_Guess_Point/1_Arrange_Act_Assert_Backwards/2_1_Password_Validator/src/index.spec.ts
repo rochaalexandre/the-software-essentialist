@@ -39,4 +39,10 @@ describe('password validator', () => {
     expect(result.errors).toHaveLength(1)
   })
 
+  test('Should return an error when the password does not contains any Upper Case Char', () => {
+    const result = PasswordValidator.validate("uak7qeqdubjddir")
+    expect(result.success).toBeFalsy()
+    expect(result.errors).toHaveLength(1)
+  })
+
 })
