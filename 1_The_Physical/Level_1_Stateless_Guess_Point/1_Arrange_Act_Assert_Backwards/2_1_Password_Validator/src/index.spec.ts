@@ -2,12 +2,12 @@ import { PasswordValidator, Result } from "./index";
 
 describe('password validator', () => {
 
-  test('Return object has sucess equal true', () => {
+  test('Should get a return object that has sucess equal true', () => {
     const result = new Result()
     expect(result.isSuccess()).toBeTruthy()
   })
 
-  test('Return object contains error list with one element', () => {
+  test('Should get a return object that contains an error list with one element', () => {
     const result= new Result()
     result.addError('Your password should contain at least 1 digit')
 
@@ -21,28 +21,17 @@ describe('password validator', () => {
     expect(result.isSuccess()).toBeTruthy()
   })
 
-  test('Should return an error when the password length is less than 5', () => {
-    const result = PasswordValidator.validate("123A")
-    expect(result.isSuccess()).toBeFalsy()
-    expect(result.getErrors()).toHaveLength(1)
-  })
+  test.each([
+    {value: '123A', reason: 'length is less than 5'},
+    {value: 'thePhysical1234567', reason: 'length is bigger than 15'},
+    {value: 'maxwellTheBe', reason: 'does not contains any digit'},
+    {value: 'maxwell1_c', reason: 'does not contains any Upper Case Char'},
+    {value: 'maxwell1_c', reason: 'does not contains any Upper Case Char'},
+    ])('Should return an error when the password is $value - $reason', ({value}) => {
+      const result = PasswordValidator.validate(value)
+      expect(result.isSuccess()).toBeFalsy()
+      expect(result.getErrors()).toHaveLength(1)
+    });
 
-  test('Should return an error when the password length is bigger than 15', () => {
-    const result = PasswordValidator.validate("uaK7qeqDUBJddir1233")
-    expect(result.isSuccess()).toBeFalsy()
-    expect(result.getErrors()).toHaveLength(1)
-  })
-
-  test('Should return an error when the password does not contains any digit', () => {
-    const result = PasswordValidator.validate("uaKKqeqDUBJddir")
-    expect(result.isSuccess()).toBeFalsy()
-    expect(result.getErrors()).toHaveLength(1)
-  })
-
-  test('Should return an error when the password does not contains any Upper Case Char', () => {
-    const result = PasswordValidator.validate("uak7qeqdubjddir")
-    expect(result.isSuccess()).toBeFalsy()
-    expect(result.getErrors()).toHaveLength(1)
-  })
 
 })
