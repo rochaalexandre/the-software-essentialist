@@ -33,4 +33,10 @@ describe('password validator', () => {
     expect(result.errors).toHaveLength(1)
   })
 
+  test('Should return an error when the password length is bigger than 15', () => {
+    const result = PasswordValidator.validate("uaK7qeqDUBJddir1233")
+    expect(result.success).toBeFalsy()
+    expect(result.errors).toHaveLength(1)
+  })
+
 })
