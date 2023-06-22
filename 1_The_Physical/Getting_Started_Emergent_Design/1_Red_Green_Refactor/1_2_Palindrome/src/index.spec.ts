@@ -1,47 +1,29 @@
-import {isPalindrome} from "./index";
+import { isPalindrome } from "./index";
 
-describe('palindrome checker', () => {
-    it('should return a boolean', () => {
-        expect(typeof isPalindrome('word')).toBe('boolean')
-    })
+describe("palindrome checker", () => {
+  describe("recognize simple words palindromes ignoring case", () => {
+    it.each(["mom", "Mom", "MoM", "xMomX"])(
+      'it knows that "%s" is a palindrome',
+      (value) => {
+        expect(isPalindrome(value)).toBeTruthy();
+      }
+    );
 
-    it('should return true for "mom"', async () => {
-        expect(isPalindrome('mom')).toBeTruthy()
+    it('knows that "Momx" is not a palindrome', async () => {
+      expect(isPalindrome("Momx")).toBeFalsy();
     });
+  });
 
-    it('should return true for "Mom"', async () => {
-        expect(isPalindrome('Mom')).toBeTruthy()
+  describe("recognize phrases palindromes ignoring case", () => {
+    it.each(["Was It A Rat I Saw", "Never Odd or Even", "1Never Odd or Even1"])(
+      'it knows "%s" is a palindrome',
+      (value) => {
+        expect(isPalindrome(value)).toBeTruthy();
+      }
+    );
+
+    it('knows that "Never Odd or Even1" is not a palindrome', async () => {
+      expect(isPalindrome("Never Odd or Even1")).toBeFalsy();
     });
-
-    it('should return true for "MoM"', async () => {
-        expect(isPalindrome('Mom')).toBeTruthy()
-    });
-
-    it('should return false for "Momx"', async () => {
-        expect(isPalindrome('Momx')).toBeFalsy()
-    });
-
-    it('should return true for "xMomx"', async () => {
-        expect(isPalindrome('xMomx')).toBeTruthy()
-    });
-
-    it('should return true for "Was It A Rat I Saw"', async () => {
-        expect(isPalindrome('Was It A Rat I Saw')).toBeTruthy()
-    });
-
-    it('should return true for "Never Odd or Even"', async () => {
-        expect(isPalindrome('Never Odd or Even')).toBeTruthy()
-    });
-
-    it('should return false for "Never Odd or Even1"', async () => {
-        expect(isPalindrome('Never Odd or Even1')).toBeFalsy()
-    });
-
-    it('should return true for "1Never Odd or Even1"', async () => {
-        expect(isPalindrome('1Never Odd or Even1')).toBeTruthy()
-    });
-
-
-})
-
-
+  });
+});
