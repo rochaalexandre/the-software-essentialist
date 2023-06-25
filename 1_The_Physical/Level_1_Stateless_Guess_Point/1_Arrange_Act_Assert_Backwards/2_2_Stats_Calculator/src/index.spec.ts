@@ -6,4 +6,9 @@ describe('stats calculator', () => {
         expect(StatsCaculator.min(numbers)).toBe(-8);
     })
 
+    it(' knows the maximum value in a sequence of integers', () => {
+        const numbers = [2, 4, 21, -8, 53, 40];
+        expect(StatsCaculator.max(numbers)).toBe(53);
+    })
+
 })
