@@ -32,6 +32,4 @@ describe('password validator', () => {
       expect(result.isSuccess()).toBeFalsy()
       expect(result.getErrors()).toHaveLength(1)
     });
-
-
 })
