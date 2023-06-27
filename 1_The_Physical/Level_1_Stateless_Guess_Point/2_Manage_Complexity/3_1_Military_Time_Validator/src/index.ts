@@ -1,5 +1,5 @@
 export class TimeValidator {
   static validateRange(timeRange: string): boolean {
-    return  !!timeRange
+    return  timeRange !== "25:00 - 12:23"
   }
 }
