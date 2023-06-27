@@ -2,8 +2,7 @@ import {TimeValidator} from "./index";
 
 describe('military time validator', () => {
 
-    it('knows how to validate military time ranges', () => {
-        expect(() => TimeValidator.validateRange()).toThrow()
+    it('knows that "01:12 - 14:32" is valid military time range ', () => {
+        expect(TimeValidator.validateRange("01:12 - 14:32")).toBeTruthy()
     });
-
 })
