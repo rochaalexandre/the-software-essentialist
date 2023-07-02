@@ -19,4 +19,10 @@ describe("boolean calculator", () => {
     });
   });
 
+  describe("Evaluate double expressions", () => {
+    it('Should evalutate "TRUE AND FALSE" as truthy', () => {
+      expect(BooleanCalculator.evaluate("TRUE AND FALSE")).toBeFalsy()
+    });
+  })
+
 });
