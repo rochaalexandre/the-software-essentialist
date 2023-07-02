@@ -23,6 +23,10 @@ describe("boolean calculator", () => {
     it('Should evalutate "TRUE AND FALSE" as truthy', () => {
       expect(BooleanCalculator.evaluate("TRUE AND FALSE")).toBeFalsy()
     });
+
+    it('Should evalutate "TRUE AND TRUE" as truthy', () => {
+      expect(BooleanCalculator.evaluate("TRUE AND TRUE")).toBeTruthy()
+    });
   })
 
 });
