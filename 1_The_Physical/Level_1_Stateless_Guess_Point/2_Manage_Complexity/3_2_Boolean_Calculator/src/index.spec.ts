@@ -1,7 +1,7 @@
 import { BooleanCalculator } from "./index";
 
 describe("boolean calculator", () => {
-  describe("Simple expression", () => {
+  describe("Evaluate simple expressions", () => {
     it('Should evalutate "TRUE" as truthy', () => {
       expect(BooleanCalculator.evaluate("TRUE")).toBeTruthy();
     });
@@ -19,5 +19,4 @@ describe("boolean calculator", () => {
     });
   });
 
-  
 });
