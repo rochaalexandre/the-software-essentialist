@@ -28,6 +28,7 @@ describe("boolean calculator", () => {
   describe("Evaluate expressions with multiple operators:", () => {
     it.each([
       { expression: "TRUE OR TRUE OR TRUE AND FALSE", result: false },
+      { expression: "TRUE OR FALSE AND NOT FALSE", result: true },
     ])('Evaluate "$expression" as $result', ({ expression, result }) => {
       expect(BooleanCalculator.evaluate(expression)).toBe(result);
     });
