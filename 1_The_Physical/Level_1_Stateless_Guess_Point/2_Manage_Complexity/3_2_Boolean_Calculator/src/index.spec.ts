@@ -24,4 +24,12 @@ describe("boolean calculator", () => {
       expect(BooleanCalculator.evaluate(expression)).toBe(result);
     });
   });
+
+  describe("Evaluate expressions with multiple operators:", () => {
+    it.each([
+      { expression: "TRUE OR TRUE OR TRUE AND FALSE", result: false },
+    ])('Evaluate "$expression" as $result', ({ expression, result }) => {
+      expect(BooleanCalculator.evaluate(expression)).toBe(result);
+    });
+  });
 });
