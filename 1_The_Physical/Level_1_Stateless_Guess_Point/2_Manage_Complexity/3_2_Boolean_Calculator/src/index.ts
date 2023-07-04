@@ -1,23 +1,32 @@
 const AND_OPERATOR = "AND";
 const OR_OPERATOR = "OR";
 const CONDITIONAL_OPERATOR = [AND_OPERATOR, OR_OPERATOR];
-
+const PATTERN = /\(([^()]*)\)/g;
 export class BooleanCalculator {
 
   static evaluate(expression: string): boolean {
-    if (this.hasMultipleConditionalOperators(expression)) {
-      return this.handleMultiOperatorsCase(expression);
-    } else if (expression.includes(AND_OPERATOR)) {
-      return this.handleAndOperator(expression);
-    } else if (expression.includes(OR_OPERATOR)) {
-      return this.handleOrOperator(expression);
+    const value = expression.match(PATTERN) ? this.handleParenthesisExpression(expression) : expression;
+
+    if (this.hasMultipleConditionalOperators(value)) {
+      return this.handleMultiOperatorsCase(value);
+    } else if (value.includes(AND_OPERATOR)) {
+      return this.handleAndOperator(value);
+    } else if (value.includes(OR_OPERATOR)) {
+      return this.handleOrOperator(value);
     }
 
-    return this.evaluateSingleExpression(expression);
+    return this.evaluateSingleExpression(value);
   }
 
   private static hasMultipleConditionalOperators(expression: string) {
     return  expression.split(' ').filter((part) => [AND_OPERATOR, OR_OPERATOR].includes(part)).length > 1
+  }
+
+  private static handleParenthesisExpression(expression: string) {
+    return  expression.replace(PATTERN, (group) => {
+      const cleanValue = group.replace("(", "").replace(")", "")
+      return String(this.evaluate(cleanValue)).toUpperCase()
+    })
   }
 
   //"TRUE OR FALSE AND NOT FALSE"
