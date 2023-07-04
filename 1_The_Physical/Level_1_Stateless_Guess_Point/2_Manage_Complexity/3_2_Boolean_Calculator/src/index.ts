@@ -4,18 +4,18 @@ const CONDITIONAL_OPERATOR = [AND_OPERATOR, OR_OPERATOR];
 const PATTERN = /\(([^()]*)\)/g;
 export class BooleanCalculator {
 
-  static evaluate(expression: string): boolean {
-    const value = expression.match(PATTERN) ? this.handleParenthesisExpression(expression) : expression;
+  static evaluate(param: string): boolean {
+    const expression = param.match(PATTERN) ? this.handleParenthesisExpression(param) : param;
 
-    if (this.hasMultipleConditionalOperators(value)) {
-      return this.handleMultiOperatorsCase(value);
-    } else if (value.includes(AND_OPERATOR)) {
-      return this.handleAndOperator(value);
-    } else if (value.includes(OR_OPERATOR)) {
-      return this.handleOrOperator(value);
+    if (this.hasMultipleConditionalOperators(expression)) {
+      return this.handleMultiOperatorsCase(expression);
+    } else if (expression.includes(AND_OPERATOR)) {
+      return this.handleAndOperator(expression);
+    } else if (expression.includes(OR_OPERATOR)) {
+      return this.handleOrOperator(expression);
     }
 
-    return this.evaluateSingleExpression(value);
+    return this.evaluateSingleExpression(expression);
   }
 
   private static hasMultipleConditionalOperators(expression: string) {
@@ -32,7 +32,6 @@ export class BooleanCalculator {
     return result;
   }
 
-  //"TRUE OR FALSE AND NOT FALSE"
   private static handleMultiOperatorsCase(expression: string) {
     let tokens = expression;
     let hasOperatorTrue = true;
