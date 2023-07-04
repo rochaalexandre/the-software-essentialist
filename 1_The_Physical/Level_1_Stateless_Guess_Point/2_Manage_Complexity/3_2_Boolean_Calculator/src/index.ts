@@ -22,20 +22,20 @@ export class BooleanCalculator {
 
   //"TRUE OR FALSE AND NOT FALSE"
   private static handleMultiOperatorsCase(expression: string) {
-    let tokens = expression.split(' ');
+    let tokens = expression;
     let hasOperatorTrue = true;
     while (hasOperatorTrue) {
-      tokens = this.evaluateFirstExpression(tokens);
-      hasOperatorTrue = this.hasMultipleConditionalOperators(tokens.join(' '))
+      tokens = this.evaluateFirstExpression(tokens.split(' '));
+      hasOperatorTrue = this.hasMultipleConditionalOperators(tokens)
     }
-   return this.evaluate(tokens.join(' '))
+    return this.evaluate(tokens)
   }
 
   private static evaluateFirstExpression(tokens: string[]) {
     const firstOperatorIndex = tokens.findIndex((part) => CONDITIONAL_OPERATOR.includes(part))
     const firstExpression = tokens.slice(0, firstOperatorIndex + 2).join(' ')
     const result = this.evaluate(firstExpression) ? 'TRUE' : 'FALSE'
-    return [result].concat(tokens.slice(firstOperatorIndex + 2))
+    return tokens.join(' ').replace(firstExpression, result)
   }
 
   static handleAndOperator(expression: string) {
