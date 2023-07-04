@@ -37,7 +37,11 @@ describe("boolean calculator", () => {
   describe("Evaluate expressions with multiple operators with Parenthesis:", () => {
     it.each([
       { expression: "(TRUE OR TRUE OR TRUE) AND FALSE", result: false },
+      { expression: "(TRUE OR TRUE) AND (NOT FALSE AND TRUE)", result: true },
+      { expression: "(TRUE OR TRUE) AND ((TRUE OR TRUE) AND TRUE)", result: true },
       { expression: "NOT (TRUE AND TRUE)", result: false },
+      { expression: "NOT (TRUE AND TRUE) AND (TRUE OR FALSE)", result: false },
+      { expression: "NOT (TRUE AND (TRUE AND TRUE)) AND (TRUE OR FALSE)", result: false },
     ])('Evaluate "$expression" as $result', ({ expression, result }) => {
       expect(BooleanCalculator.evaluate(expression)).toBe(result);
     });

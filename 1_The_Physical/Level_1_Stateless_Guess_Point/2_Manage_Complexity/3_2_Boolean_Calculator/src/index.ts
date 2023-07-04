@@ -23,10 +23,13 @@ export class BooleanCalculator {
   }
 
   private static handleParenthesisExpression(expression: string) {
-    return  expression.replace(PATTERN, (group) => {
+    let result = expression
+    while (result.match(PATTERN))
+      result =  result.replace(PATTERN, (group) => {
       const cleanValue = group.replace("(", "").replace(")", "")
       return String(this.evaluate(cleanValue)).toUpperCase()
     })
+    return result;
   }
 
   //"TRUE OR FALSE AND NOT FALSE"
