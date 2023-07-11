@@ -5,7 +5,7 @@ export type StatsResult = {
   average: number;
 };
 
-export class StatsCaculator {
+export class StatsCalculator {
   static calculate(numbers: number[]): StatsResult {
     return {
       count: this.count(numbers),

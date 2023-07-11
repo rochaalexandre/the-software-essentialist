@@ -8,11 +8,11 @@ export function fizzBuzz(param: number) {
         return result;
     }
 
-    if (isMutipleOf3(param)) {
+    if (isMultipleOf3(param)) {
         result += FIZZ
     }
 
-    if (isMutipleOf5(param)) {
+    if (isMultipleOf5(param)) {
         result += BUZZ
     }
 
@@ -23,5 +23,5 @@ export function fizzBuzz(param: number) {
     return result
 }
 
-const isMutipleOf3 = (param: number) => param % 3 === 0
-const isMutipleOf5 = (param: number) => param % 5 === 0
+const isMultipleOf3 = (param: number) => param % 3 === 0
+const isMultipleOf5 = (param: number) => param % 5 === 0
