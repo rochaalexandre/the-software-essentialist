@@ -8,6 +8,22 @@ class UserRepository {
         });
     }
 
+    async findByUserName(username: string) {
+        return prisma.user.findUnique({
+            where: {
+                username,
+            },
+        });
+    }
+
+    async findByEmail(email: string) {
+        return prisma.user.findUnique({
+            where: {
+                email,
+            },
+        });
+    }
+
     async getUsers() {
         return prisma.user.findMany();
     }
