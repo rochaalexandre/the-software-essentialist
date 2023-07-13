@@ -1,17 +1,18 @@
-FROM node:18-alpine as development
-ENV NODE_ENV=development
+FROM node:18-alpine as build
 WORKDIR /app
-
-CMD ["npm", "dev"]
-
-FROM node:18-alpine as production
-CMD ["npm", "start"]
-WORKDIR /app
+ADD . .
 
 COPY package.json ./package.json
 RUN npm install
 
-COPY ./ ./
-RUN npm run build
+RUN npx prisma generate
 
-ENV NODE_ENV=production
+FROM node:18-alpine as development
+ENV NODE_ENV=development
+WORKDIR /app
+
+COPY --from=build /app/node_modules ./node_modules
+
+CMD ["npm", "run", "start:dev"]
+
+
