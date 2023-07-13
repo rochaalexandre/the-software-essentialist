@@ -8,10 +8,10 @@ class UserRepository {
         });
     }
 
-    async findByUserName(username: string) {
+    async findByUserName(userName: string) {
         return prisma.user.findUnique({
             where: {
-                username,
+                userName,
             },
         });
     }

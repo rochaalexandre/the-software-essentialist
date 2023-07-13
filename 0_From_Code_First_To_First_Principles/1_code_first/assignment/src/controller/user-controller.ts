@@ -1,30 +1,45 @@
 import { Request, Response } from 'express';
 import { User } from '../models/user-model';
 import userRepository from '../repository/user-repository';
+import { body, ValidationChain } from 'express-validator';
 
 class UserController {
-
-    constructor() {
-    }
+    public requiredFields: ValidationChain[] = [
+        body('userName').notEmpty().isLength({min: 3}),
+        body('firstName').notEmpty().isLength({min: 3}),
+        body('lastName').notEmpty().isLength({min: 3}),
+        body('password').notEmpty().isLength({min: 3}),
+        body('email').isEmail()
+    ]
 
      createUser = async (req: Request, res: Response) => {
-        console.log('This', this)
         const user: User = req.body;
-        let error = await this.validateUserName(user.username);
+        let error = await this.validateUserName(user.userName);
         if (error) {
             res.status(409).json({error, data: undefined, success: false});
+            return
         }
         error = await this.validateEmail(user.email);
         if (error) {
             res.status(409).json({error, data: undefined, success: false});
+            return
         }
 
         let result = await userRepository.createUser(user);
-        res.status(201).json(result);
+        return res.status(201).json(result);
     }
 
      getUsers = async(req: Request, res: Response) => {
-        const users = await userRepository.getUsers();
+        const {email} = req.query
+
+        let users
+        if (email) {
+            const result = await userRepository.findByEmail(email as string);
+            users = [result]
+        }else {
+            users= await userRepository.getUsers();
+        }
+
         res.status(200).json({ error: undefined, data: users, success: true } );
     }
 
@@ -39,18 +54,20 @@ class UserController {
     }
 
      updateUser = async(req: Request, res: Response) => {
-        const { id } = req.params;
+        const { userId } = req.params;
         const userParam: User = req.body;
-        let error = await this.validateUserName(userParam.username);
+        let error = await this.validateUserName(userParam.userName);
         if (error) {
             res.status(409).json({error, data: undefined, success: false});
+            return
         }
         error = await this.validateEmail(userParam.email);
         if (error) {
             res.status(409).json({error, data: undefined, success: false});
+            return
         }
 
-        let result = await userRepository.updateUser(Number(id), userParam);
+        let result = await userRepository.updateUser(Number(userId), userParam);
         if (result) {
             res.json({ error: undefined, data: result, success: true } );
         } else {
@@ -75,7 +92,7 @@ class UserController {
     }
 
      private validateEmail = async(email: string) =>  {
-        const exists = await userRepository.findByUserName(email)
+        const exists = await userRepository.findByEmail(email)
         return exists ? 'EmailAlreadyInUse': null
     }
 }
