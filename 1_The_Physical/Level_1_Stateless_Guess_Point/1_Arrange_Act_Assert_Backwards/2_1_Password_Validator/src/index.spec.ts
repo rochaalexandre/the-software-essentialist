@@ -21,6 +21,12 @@ describe('password validator', () => {
     expect(result.isSuccess()).toBeTruthy()
   })
 
+  test('Should multiple errors for the value "mom"', ()=> {
+    const result = PasswordValidator.validate("mom")
+    expect(result.isSuccess()).toBeFalsy()
+    expect(result.getErrors()).toHaveLength(3)
+  })
+
   test.each([
     {value: '123A', reason: 'length is less than 5'},
     {value: 'thePhysical1234567', reason: 'length is bigger than 15'},
